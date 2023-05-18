@@ -9,11 +9,15 @@ namespace Graphiki
         {
             InitializeComponent();
             pictureBox1.Image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+            getCoordinats();
         }
         int y, x;
         int[] xs = new int[161];
         int[] ys = new int[161];
-        Pen negro = new Pen(Color.Red, 1);
+        Pen parab = new Pen(Color.Red, 1);
+        Pen hyp = new Pen(Color.DodgerBlue, 1);
+        Pen sin = new Pen(Color.LimeGreen, 1);
+        Pen qparab = new Pen(Color.BlueViolet, 1);
         void getCoordinats()
         {
             y = pictureBox1.Width / 2;
@@ -40,7 +44,7 @@ namespace Graphiki
             getCoordinats();
 
             x = -80;
-            for (int i = 0; i < xs.Length - 1; i++)
+            for (int i = 0; i < xs.Length; i++)
             {
                 y = (x * x) / 13;
                 xs[i] = x;
@@ -52,7 +56,7 @@ namespace Graphiki
             {
                 using (var graphics = Graphics.FromImage(((Bitmap)pictureBox1.Image)))
                 {
-                    graphics.DrawLine(negro, 300 - xs[h], 300 - ys[j], 300 - xs[h - 1], 300 - ys[j - 1]);
+                    graphics.DrawLine(parab, 300 - xs[h], 300 - ys[j], 300 - xs[h - 1], 300 - ys[j - 1]);
                 }
                 h++;
             }
@@ -78,7 +82,7 @@ namespace Graphiki
                 float yg = dy * (yMax - y);
                 using (var hyper = Graphics.FromImage(((Bitmap)pictureBox1.Image)))
                 {
-                    hyper.DrawLine(negro, xg, yg, lastx, lasty);
+                    hyper.DrawLine(hyp, xg, yg, lastx, lasty);
                 }
                 lastx = xg;
                 lasty = yg;
@@ -105,7 +109,7 @@ namespace Graphiki
             {
                 using (var sinusida = Graphics.FromImage(((Bitmap)pictureBox1.Image)))
                 {
-                    sinusida.DrawLine(negro, sinxs[k] * 17, 300 - sinys[j] * 11, sinxs[k - 1] * 17, 300 - sinys[j - 1] * 11);
+                    sinusida.DrawLine(sin, sinxs[k] * 17, 300 - sinys[j] * 11, sinxs[k - 1] * 17, 300 - sinys[j - 1] * 11);
                 }
                 k++;
             }
@@ -129,7 +133,7 @@ namespace Graphiki
             {
                 using (var graphics = Graphics.FromImage(((Bitmap)pictureBox1.Image)))
                 {
-                    graphics.DrawLine(negro, 300 - xs[h], 300 - ys[j], 300 - xs[h - 1], 300 - ys[j - 1]);
+                    graphics.DrawLine(qparab, 300 - xs[h], 300 - ys[j], 300 - xs[h - 1], 300 - ys[j - 1]);
                 }
                 h++;
             }
